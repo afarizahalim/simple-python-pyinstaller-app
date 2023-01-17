@@ -15,17 +15,6 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
-        stage('Build image Dockerfile') {
-            agent {
-                docker {
-                    image '../Dockerfile'
-                }
-            }
-            steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-                stash(name: 'compiled-results', includes: 'sources/*.py*')
-            }
-        }
         stage('Test') {
             agent {
                 docker {
@@ -60,5 +49,15 @@ pipeline {
                 }
             }
         }
+        stage('Build docker image') {
+            agent {
+                docker {
+                    image 'python:3.12.0a4-alpine3.17'
+                }
+            }
+            steps {
+                sh 'docker build '
+            }
+        }        
     }
 }
