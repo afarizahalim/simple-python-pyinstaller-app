@@ -18,7 +18,7 @@ pipeline {
         stage('Build image Dockerfile') {
             agent {
                 docker {
-                    image 'https://github.com/afarizahalim/simple-python-pyinstaller-app.git'
+                    image '../Dockerfile'
                 }
             }
             steps {
