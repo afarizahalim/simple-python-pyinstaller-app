@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('Build docker image') {
+        /*stage('Build docker image') {
             agent {
                 docker {
                     image 'python:3.12.0a4-alpine3.17'
@@ -58,6 +58,6 @@ pipeline {
             steps {
                 sh 'docker build -t myapp_calcul'
             }
-        }        
+        }*/        
     }
 }
