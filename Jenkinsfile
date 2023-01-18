@@ -6,11 +6,6 @@ dockerImage = ''
 }
 agent any
 stages {
-stage('Cloning our Git') {
-steps {
-git 'https://github.com/afarizahalim/simple-python-pyinstaller-app.git'
-}
-}
 stage('Building our image') {
 steps{
 script {
