@@ -7,6 +7,12 @@ pipeline {
     }
     agent any
     stages {
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarqubeScanner'
+            withSonarQubeEnv() {
+              sh "${scannerHome}/bin/sonar-scanner"
+            }
+        }
         stage('Building our image') {
             steps {
                 script {
