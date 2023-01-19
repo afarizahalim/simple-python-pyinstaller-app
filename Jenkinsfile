@@ -1,15 +1,15 @@
 pipeline {
     environment {
         registry = 'afarizahalim'
+        imageName = 'test-python'
         registryCredential = 'dockerhub_id'
-        dockerImage = ''
     }
     agent any
     stages {
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    def dockerImage = docker.build registry + '/' + imageName + ":$BUILD_NUMBER"
                 }
             }
         }
